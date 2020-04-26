@@ -26,6 +26,10 @@ li{
     padding: 20px;
     color: rgb(230, 240, 248);
 }
+.main-header a{
+    color: rgb(255, 255, 255);
+    margin-left: 1rem;
+}
 .main-header input{
     margin-left: 2rem;
     border: none;
