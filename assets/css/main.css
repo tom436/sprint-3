@@ -1,0 +1,105 @@
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+    margin-bottom: 3px;
+
+}
+.home-page{
+    text-align: center;
+    height: 75vh;
+    background-color: rgb(155, 182, 182);
+}
+.home-page h1,.home-page h3{
+    color: rgb(255, 255, 255);
+}
+.main-header{
+    display: flex;
+
+    background-color: rgba(80, 73, 73, 0.87);
+    padding: 20px;
+    color: rgb(230, 240, 248);
+}
+.main-header input{
+    margin-left: 2rem;
+    border: none;
+    border-radius: 1rem;
+    padding :0.4rem 0.1rem;
+    box-sizing: border-box;
+
+}
+.search-icon {
+    position: relative;
+    z-index: 1;
+    left: -2rem;
+    top:.5rem;
+    color: rgb(79, 83, 83);
+    width: 0;
+    cursor: pointer;
+    height: fit-content;
+    width: fit-content;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    padding: 0;
+  }
+.main-header input{
+    outline: none;
+}
+
+.from{
+    font-weight: bold;
+    width: 6rem;
+    font-size: 0.7rem;
+
+}  
+.email-list{
+    margin-left:10rem; 
+    padding: .7rem;
+}
+.email-list li{
+    border-top: 0.5px solid rgb(191, 198, 204);
+    display: flex;
+}
+.subject{
+    font-weight: bold;
+    font-size: 0.7rem;
+    margin-left: 1rem;
+}
+
+.body{
+    font-size: 0.7rem;
+}
+.left-nav{
+    position: fixed;
+    width: 10rem;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+}
+.left-nav ul{
+    padding: 0;
+    margin-left: 1rem;
+
+}
+.left-nav ul a:not(.compose ){
+    padding:0.3rem;
+    color: rgb(79, 83, 83);
+    font-size: 0.8rem;
+    width: 100%;
+}
+.left-nav ul .compose{
+    padding:0.3rem;
+    color: rgb(79, 83, 83);
+    border: rgb(79, 83, 83) 0.5px solid;
+    border-radius: 2rem;
+    font-size: 1.2rem
+}
+.left-nav ul a:hover{
+    background-color: rgba(158, 202, 117, 0.233);
+    color: yellowgreen;
+}
