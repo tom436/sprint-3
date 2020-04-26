@@ -107,7 +107,13 @@ _createEmails();
 
 export default {
     query,
+    getById
 }
+
+function getById(emailId) {
+    const email = gEmails.find(email => email.id === emailId)
+    return Promise.resolve(email);
+  }
 
 
 function _createEmails() {

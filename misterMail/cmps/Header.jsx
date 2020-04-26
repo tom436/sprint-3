@@ -11,12 +11,11 @@ export default function EmailList() {
         <div className="main-header">
             <h2>Apps Place</h2>
             <input  type="text" placeholder='Search mail '/>
-            <button className="fa fa-search search-icon"></button>
             <ul>
-            <Link to='/Email'>Mister Email</Link>
-            <Link to='/MissKeep'>Miss Keep</Link>
-            <Link to='/Email'>Miss Book</Link>
-            <Link to='/'>Home</Link>
+            <li><Link to='/Email'>Mister Email</Link></li>
+            <li><Link to='/MissKeep'>Miss Keep</Link></li>
+            <li> <Link to='/Email'>Miss Book</Link></li>
+            <li><Link to='/'>Home</Link></li>
 
             </ul>
         </div>
