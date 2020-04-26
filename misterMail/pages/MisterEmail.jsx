@@ -3,7 +3,7 @@ const { Link } = ReactRouterDOM
 import LeftNav from '../cmps/LeftNav.jsx'
 
 import EmailList from '../cmps/EmailList.jsx'
-import emailService from '../services/emailService.js'
+import emailService from '../services/emailServices.js'
 
 export default class EmailApp extends React.Component {
     state = {
