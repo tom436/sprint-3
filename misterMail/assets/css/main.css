@@ -63,6 +63,7 @@ li{
 
 }  
 .email-list{
+    margin-top: 1rem;
     margin-left:10rem; 
     padding: .7rem;
 }
@@ -80,9 +81,8 @@ li{
     font-size: 0.7rem;
 }
 .left-nav{
+
     position: fixed;
-    width: 10rem;
-    height: 100vh;
     background-color: rgb(255, 255, 255);
 }
 .left-nav ul{

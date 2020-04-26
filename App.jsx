@@ -3,11 +3,12 @@ const { Route, Switch } = ReactRouterDOM
 const { Link } = ReactRouterDOM
 
 const history = History.createBrowserHistory()
-HomePage
+
 import Header from 'misterMail/cmps/Header.jsx'
 import MisterEmail from 'misterMail/pages/MisterEmail.jsx';
 import HomePage from 'misterMail/pages/HomePage.jsx';
 import MissKeep from 'MissKeep/pages/KeepApp.jsx';
+import EmailDetails from 'misterMail/pages/EmailDetails.jsx';
 
 
 export class App extends React.Component {
@@ -18,11 +19,10 @@ export class App extends React.Component {
                 <header>
                     <Header />
                     <Switch>
+                    <Route component={EmailDetails} path="/Email/:theBookId" />
                     <Route component={MisterEmail} path="/Email" />
                     <Route component={MissKeep} path="/MissKeep"/>
-
                     <Route component={HomePage} path="/" />
-
                     </Switch >
                 </header>
                 <main>
