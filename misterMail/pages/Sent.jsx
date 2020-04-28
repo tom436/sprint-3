@@ -13,7 +13,7 @@ export default class EmailApp extends React.Component {
     }
 
     componentDidMount() {
-        this.loadEmails('inbox')
+        this.loadEmails('sent')
 
     }
 

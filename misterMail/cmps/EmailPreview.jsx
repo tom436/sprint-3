@@ -1,15 +1,22 @@
 const { Link } = ReactRouterDOM
+import utilService from '../services/utilService.js'
 
 
-export default function EmailList(props) {
-    const {email}=props
+
+
+export default function EmailPreview(props) {
+    const { email } = props;
+    const isRead = email.isRead;
+    const envelop= isRead ? 'far fa-envelope' : 'fas fa-envelope'
+    const time=utilService.getTime(email.sentAt)
     
     return (
-       
-            <li><Link to={`Email/${email.id}`}><div className="from">{email.from}</div><div className="subject">
-                {email.subject} -</div><div className="body">{email.body.slice(0, 40)}
-                </div></Link></li>
-       
+
+        <li className={`${envelop}`}><Link to={`/Email/details/${email.id}`}><div className={`from`}>{email.from}</div><div className={`subject `}>
+            {email.subject} -</div><div className="body">{email.body.slice(0, 40)}
+    </div><span className="time">{time}</span></Link></li>
+
     )
 }
 
+// 8<button  class="fas fa-trash-alt"></button>
