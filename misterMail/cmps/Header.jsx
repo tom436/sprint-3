@@ -2,9 +2,6 @@
 const { Link } = ReactRouterDOM
 
 
-// import MisterEmail from '../pages/MisterEmail.jsx';
-// import HomePage from '../pages/HomePage.jsx';
-// import MissKeep from '../pages/KeepApp.jsx';
 
 export default function EmailList() {
     return (
