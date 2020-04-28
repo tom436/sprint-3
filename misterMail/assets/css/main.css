@@ -31,10 +31,11 @@ footer{
     display: flex;
     align-items:center ;
     background-color: rgba(80, 73, 73, 0.87);
-    justify-content: center;
+    justify-content: space-around;
 
     color: rgb(230, 240, 248);
-}.main-header ul{
+}
+.main-header ul{
     display: flex;
 
 }
@@ -59,65 +60,200 @@ footer{
 
 }
 
-
+.list-container{
+    margin-top: 1rem;
+}
 
 .email-list{
     margin-left:10rem; 
-    padding: .7rem;
+    padding:0 .7rem;
 }
-.from{
-    font-weight: bold;
-    width: 6rem;
-    font-size: 0.7rem;
-
-}  
+ 
 .email-list a{
-    border-top: 0.5px solid rgb(191, 198, 204);
     display: flex;
     color: black;
 }
 .email-list li{
-    border-top: 0.5px solid rgb(191, 198, 204);
+    border-bottom: 0.5px solid rgb(191, 198, 204);
     display: flex;
 }
+.email-list li:hover{
+    background-color: rgb(228, 222, 222);
+}
+.email-list li:hover::after{
+    font-size: 0.7rem;
+    font-family: "Font Awesome 5 Free"; font-weight: 500; content: " \f2ed";
+
+}
+.time{
+    font-weight: 40;
+    font-size: 0.7rem;
+    position: absolute;
+    right : 5px;
+
+}
 .subject{
-    font-weight: bold;
     font-size: 0.7rem;
     margin-left: 1rem;
 }
 
+.from{
+    width: 6rem;
+    font-size: 0.7rem;
+    padding-left: 5px;
+
+}   
+
 .body{
     font-size: 0.7rem;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+
 }
 .left-nav{
-    margin-top: 1rem;
     position: fixed;
     background-color: rgb(255, 255, 255);
+    left: 0;
 }
 .left-nav ul{
     padding: 0;
     margin-left: 1rem;
 
 }
-.left-nav ul a:not(.compose ){
+
+.left-nav ul a:not(.compose ),.left-nav ul button{
     padding:0.3rem;
     color: rgb(79, 83, 83);
     font-size: 0.8rem;
     width: 100%;
+    background-color: #fff;
+    cursor: pointer;
+    border: none;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
 }
 .left-nav ul .compose{
+    outline: none;
     padding:0.3rem;
     color: rgb(79, 83, 83);
     border: rgb(79, 83, 83) 0.5px solid;
     border-radius: 2rem;
     font-size: 1.2rem
 }
-.left-nav ul a:hover{
+.left-nav ul a:hover,.left-nav ul button:hover{
     background-color: rgba(135, 200, 82, 0.233);
     color: rgb(150, 206, 38);
     transition: background-color 0.3s ;
 }
 .email-body{
+    margin-top: 1rem;
     margin-left:10rem; 
+}
+.mail-head{
+    margin-bottom: 1rem;
+}
+.mail-deatils{
+    margin-bottom: 1rem;
+}
+.bar-container{
+    width: 100%;
+    background-color: rgb(219, 212, 212);
+    border-radius: 0.3rem;
+}
+.status-bar{
+    background: linear-gradient(90deg, rgb(207, 142, 133) 0%, rgba(38, 138, 33, 0.805) 43%, rgba(0,255,46,1) 100%);  
+    border-radius: 0.3rem;
+   text-align: center;
+   color: rgb(236, 234, 234);
+   font-size: .8rem;
+   height: 1rem;
 
+   
+}
+.compose-container{
+
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    z-index: 1;
+    box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14),
+     0 3px 14px 2px rgba(0,0,0,0.12),
+     0 5px 5px -3px rgba(0,0,0,0.2);
+     
+}
+.compose-body{
+    display: flex;
+    flex-direction: column;
+
+}
+.compose-container input{
+    outline: none;
+    border: none;
+    width: 100%;
+    border-bottom: solid .5px rgb(231, 220, 219);
+    border-collapse: separate;
+
+}
+.compose-header{
+    color: ghostwhite;
+    background-color: rgb(61, 59, 59);
+    padding: 3px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    
+}
+
+.compose-header a,.compose-header button{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    cursor: pointer;
+    color: ghostwhite;
+    float: right;
+    margin-left: 10px;
+    font-size: 0.7rem;
+    margin-top: 6px;
+
+}
+.exit{
+    margin-right: 5px;
+
+}
+.button-container {
+display: flex;
+justify-content: space-between;
+background-color: rgb(255, 255, 255);
+}
+.button-container button{
+    border: none;
+    color: rgb(85, 80, 79);
+    background-color: #fff;
+    cursor: pointer;
+    outline: none;
+    margin: 1px;
+}
+.send-btn{
+    color: white !important;
+    background-color:#1a73e8 !important;
+}
+textarea {
+    border: none;
+    outline: none;
+    max-height: 40vh;
+}
+.min{
+    display: none;
+}
+.custom-file-input::before {
+    content: 'Select some files';
+    -webkit-user-select: none;
+}
+.hide{
+    display: none ;
 }

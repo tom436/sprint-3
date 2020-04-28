@@ -1,24 +1,36 @@
-const { Link } = ReactRouterDOM
+const { Route } = ReactRouterDOM
 
-import LeftNav from '../cmps/LeftNav.jsx'
-
-import EmailList from '../cmps/EmailList.jsx'
+import {LeftNav} from '../cmps/LeftNav.jsx'
+import  eventBus  from "../services/eventBusService.js"
+import {EmailList} from '../cmps/EmailList.jsx'
 import emailService from '../services/emailServices.js'
-
-export default class EmailApp extends React.Component {
+import {EmailCompose} from './EmailCompose.jsx';
+<EmailCompose />
+export  class MisterEmail extends React.Component {
     state = {
         emails: null,
         filterBy: null,
     }
 
     componentDidMount() {
-        this.loadEmails()
+        const folder = this.props.match.params.folderName
+        console.log(folder);
+        this.loadEmails(folder)
     }
-    loadEmails() {
-        emailService.query(this.state.filterBy)
-            .then(emails => {
+  
 
+    loadEmails(dest) {
+        emailService.query(this.state.filterBy, dest)
+            .then(emails => {
                 this.setState({ emails })
+            })
+    }
+    onSendMail = (subject, name, body) => {
+
+        emailService.sendEmail(subject, name, body)
+            .then(()=> {
+                const folder = this.props.match.params.folderName
+                this.loadEmails(folder)
             })
     }
 
@@ -26,9 +38,12 @@ export default class EmailApp extends React.Component {
         const { emails } = this.state
         return (
             !emails ? 'Loading...' :
-                <section>
+                <section className="list-container">
                     <LeftNav />
+                    <EmailCompose onSendMail={this.onSendMail} />
+
                     <EmailList emails={emails} />
+
                 </section>
         )
     }

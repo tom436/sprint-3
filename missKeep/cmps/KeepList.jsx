@@ -2,7 +2,7 @@ import { NoteImg } from 'NoteImg.jsx'
 import { NoteTodos } from 'NoteTodos.jsx'
 import { NoteTxt } from 'NoteTxt.jsx'
 
-export default function KeepList(props) {
+export  function KeepList(props) {
     const { keeps } = props
     return (
         <section className="keeps">

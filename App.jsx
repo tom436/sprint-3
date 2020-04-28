@@ -1,14 +1,13 @@
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
-const { Link } = ReactRouterDOM
+// const { Link } = ReactRouterDOM
+// const history = History.createBrowserHistory()
 
-const history = History.createBrowserHistory()
-
-import Header from './misterMail/cmps/Header.jsx'
-import MisterEmail from './misterMail/pages/MisterEmail.jsx';
-import HomePage from './misterMail/pages/HomePage.jsx';
+import {Header} from './misterMail/cmps/Header.jsx'
+import {MisterEmail} from './misterMail/pages/MisterEmail.jsx';
+import {HomePage} from './misterMail/pages/HomePage.jsx';
 import {KeepApp} from './missKeep/pages/KeepApp.jsx';
-import EmailDetails from './misterMail/pages/EmailDetails.jsx';
+import {EmailDetails} from './misterMail/pages/EmailDetails.jsx';
 
 
 export class App extends React.Component {
@@ -19,8 +18,10 @@ export class App extends React.Component {
                 <header>
                     <Header />
                     <Switch>
-                    <Route component={EmailDetails} path="/email/:theBookId" />
-                    <Route component={MisterEmail} path="/email" />
+                    <Route component={EmailDetails} path="/email/details/:theEmailId" />
+
+                    <Route component={MisterEmail} path="/email/:folderName" />
+
                     <Route component={KeepApp} path="/missKeep"/>
                     <Route component={HomePage} path="/" />
                     </Switch >

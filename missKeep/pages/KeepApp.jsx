@@ -3,7 +3,6 @@ import keepService from '../services/keepService.js'
 import { KeepAdd } from '../cmps/KeepAdd.jsx'
 import KeepList from '../cmps/KeepList.jsx'
 // import KeepFilter from '../cmps/KeepFilter.jsx'
-
 export class KeepApp extends React.Component {
     state = {
         keeps: null,
