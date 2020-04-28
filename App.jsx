@@ -1,17 +1,13 @@
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
-const { Link } = ReactRouterDOM
+// const { Link } = ReactRouterDOM
+// const history = History.createBrowserHistory()
 
-const history = History.createBrowserHistory()
-
-import Header from 'misterMail/cmps/Header.jsx'
-import MisterEmail from 'misterMail/pages/MisterEmail.jsx';
-import Sent from 'misterMail/pages/Sent.jsx';
-
-import HomePage from 'misterMail/pages/HomePage.jsx';
-import MissKeep from 'MissKeep/pages/KeepApp.jsx';
-import EmailDetails from 'misterMail/pages/EmailDetails.jsx';
-import EmailCompose from 'misterMail/pages/EmailCompose.jsx';
+import {Header} from './misterMail/cmps/Header.jsx'
+import {MisterEmail} from './misterMail/pages/MisterEmail.jsx';
+import {HomePage} from './misterMail/pages/HomePage.jsx';
+import {KeepApp} from './missKeep/pages/KeepApp.jsx';
+import {EmailDetails} from './misterMail/pages/EmailDetails.jsx';
 
 
 export class App extends React.Component {
@@ -20,14 +16,13 @@ export class App extends React.Component {
         return (
             <Router >
                 <header>
-                <EmailCompose/>
                     <Header />
                     <Switch>
-                    <Route component={EmailDetails} path="/Email/details/:theEmailId" />
-                    <Route component={MisterEmail} path="/Email" />
-                    <Route component={Sent} path="/sent" />
+                    <Route component={EmailDetails} path="/email/details/:theEmailId" />
 
-                    <Route component={MissKeep} path="/MissKeep"/>
+                    <Route component={MisterEmail} path="/email/:folderName" />
+
+                    <Route component={KeepApp} path="/missKeep"/>
                     <Route component={HomePage} path="/" />
                     </Switch >
                 </header>

@@ -1,10 +1,9 @@
-const { NavLink, Link } = ReactRouterDOM
+const {  Link } = ReactRouterDOM
 import { eventBus } from "../services/eventBusService.js"
 
-import emailService from '../services/emailServices.js'
 
 
-export default class Compose extends React.Component {
+export  class EmailCompose extends React.Component {
     state = {
         min: '',
         max: 'min',
@@ -31,12 +30,10 @@ export default class Compose extends React.Component {
     }
     onSendMail = (ev) => {
         ev.preventDefault()
-
-        emailService.sendEmail(this.state.subject, 'Tom', this.state.body)
-            .then(this.setState({
-                open: '',
-                
-            }))
+        this.props.onSendMail(this.state.subject, 'Tom', this.state.body)
+            this.setState({
+                open: 'hide'
+            })
 
     }
 
@@ -49,8 +46,8 @@ export default class Compose extends React.Component {
                 <div className={` compose-container ${open}`}>
                     <div className="compose-header">
                         New Massage
-                        <Link className="fas fa-times exit" to="/Email"></Link>
-                        <Link className="fas fa-expand-alt exit" to="/Email"></Link>
+                        <Link className="fas fa-times exit" to="/email"></Link>
+                        <Link className="fas fa-expand-alt exit" to="/email"></Link>
                         <button className={`${this.state.min} fas fa-window-minimize`} onClick={() => {
                             this.setState({ min: 'min', max: '' })
                         }}></button>

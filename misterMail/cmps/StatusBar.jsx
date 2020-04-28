@@ -2,7 +2,7 @@
 
 
 
-export default function StatusBar(props) {
+export  function StatusBar(props) {
 
 
     const pc=props.pc;

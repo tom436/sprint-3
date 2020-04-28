@@ -1,14 +1,9 @@
-const { Link } = ReactRouterDOM
-const { Route, Switch } = ReactRouterDOM
 
-import LeftNav from '../cmps/LeftNav.jsx'
-import EmailCompose from 'EmailCompose.jsx';
+import {LeftNav} from '../cmps/LeftNav.jsx'
 
-
-import EmailList from '../cmps/EmailList.jsx'
 import emailService from '../services/emailServices.js'
 
-export default class EmailApp extends React.Component {
+export class EmailDetails extends React.Component {
     state = {
 
     }
@@ -26,9 +21,11 @@ export default class EmailApp extends React.Component {
     }
 
     onRemove = () => {
+        const folder = this.props.match.params.folderName
+
         emailService.remove(this.state.email.id)
             .then(
-                this.props.history.push('/Email')
+                this.props.history.push(`/email/inbox`)
             )
     }
 
@@ -38,7 +35,7 @@ export default class EmailApp extends React.Component {
         return (
             !email ? 'Loading...' :
                 <section>
-                    <LeftNav compose={'/details/:theEmailId/'}/>
+                    <LeftNav/>
 
                     <div className="email-body">
                         <div className="mail-head"><h3>{email.subject}</h3><button onClick={this.onRemove} className="fas fa-trash-alt"></button ></div>
