@@ -7,7 +7,6 @@ import {Header} from './misterMail/cmps/Header.jsx'
 import {MisterEmail} from './misterMail/pages/MisterEmail.jsx';
 import {HomePage} from './misterMail/pages/HomePage.jsx';
 import {KeepApp} from './missKeep/pages/KeepApp.jsx';
-import {EmailDetails} from './misterMail/pages/EmailDetails.jsx';
 
 
 export class App extends React.Component {

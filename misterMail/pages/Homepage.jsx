@@ -13,8 +13,6 @@ export  class HomePage extends React.Component {
         return (
             <section className="home-page">
                 
-                <h1>Welcome to appsus</h1>
-                <h3>your favorite app</h3>
 
             </section>
         )

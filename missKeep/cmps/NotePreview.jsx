@@ -1,5 +1,5 @@
 import { ToolBar } from 'ToolBar.jsx'
-import {KeepAdd} from 'KeepAdd.jsx'
+import {KeepAdd} from './KeepAdd.jsx'
 
 export function NotePreview(props) {
     const Note = props

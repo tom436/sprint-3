@@ -13,7 +13,6 @@ export  function Header() {
             <ul>
             <li><Link to='/email/inbox'>Mister Email</Link></li>
             <li><Link to='/MissKeep'>Miss Keep</Link></li>
-            <li> <Link to='/missbook'>Miss Book</Link></li>
             </ul>
         </div>
     )
