@@ -9,7 +9,7 @@ export  function Header() {
         <div className="main-header">
             <UserMsg />
 
-            <Link to='/'><img src="../../logo.png" alt=""></img></Link>
+            <Link to='/'><img src="./logo.png" alt=""></img></Link>
             <ul>
             <li><Link to='/email/inbox'>Mister Email</Link></li>
             <li><Link to='/MissKeep'>Miss Keep</Link></li>
