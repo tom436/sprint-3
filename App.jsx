@@ -3,6 +3,7 @@ const { Route, Switch } = ReactRouterDOM
 
 import {Header} from './misterMail/cmps/Header.jsx'
 import {MisterEmail} from './misterMail/pages/MisterEmail.jsx';
+import {HomePage} from './misterMail/pages/HomePage.jsx';
 import {KeepApp} from './missKeep/pages/KeepApp.jsx';
 
 
@@ -16,7 +17,7 @@ export class App extends React.Component {
                         
                     <Route component={MisterEmail} path="/email/:folderName" />
                     <Route component={KeepApp} path="/missKeep"/>
-                    <Route component={MisterEmail} path="/" />
+                    <Route component={HomePage} path="/" />
                     </Switch >
                 <main>
                 </main>
