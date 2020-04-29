@@ -4,7 +4,6 @@ import emailService from '../services/emailServices.js'
 import { eventBus } from "../services/eventBusService.js"
 
 import { StatusBar } from './StatusBar.jsx'
-import { UserMsg } from "../../UserMsg.jsx"
 
 export class LeftNav extends React.Component {
     state = {
@@ -34,7 +33,6 @@ export class LeftNav extends React.Component {
     render() {
         return (
             <section className="left-nav">
-                <UserMsg />
 
                 <ul>
                     <li><button className="fas fa-plus compose" onClick={() => {
