@@ -1,49 +1,39 @@
-const { Route } = ReactRouterDOM
-
+const { Route, Switch } = ReactRouterDOM
 import {LeftNav} from '../cmps/LeftNav.jsx'
-import  eventBus  from "../services/eventBusService.js"
-import {EmailList} from '../cmps/EmailList.jsx'
+import {Folders} from './Folders.jsx';
+import {EmailDetails} from './EmailDetails.jsx';
 import emailService from '../services/emailServices.js'
 import {EmailCompose} from './EmailCompose.jsx';
-<EmailCompose />
 export  class MisterEmail extends React.Component {
     state = {
-        emails: null,
-        filterBy: null,
     }
 
-    componentDidMount() {
-        const folder = this.props.match.params.folderName
-        console.log(folder);
-        this.loadEmails(folder)
-    }
-  
-
-    loadEmails(dest) {
-        emailService.query(this.state.filterBy, dest)
-            .then(emails => {
-                this.setState({ emails })
-            })
-    }
     onSendMail = (subject, name, body) => {
-
+        if(!subject||!body) return
         emailService.sendEmail(subject, name, body)
             .then(()=> {
-                const folder = this.props.match.params.folderName
-                this.loadEmails(folder)
-            })
+                this.setState({ sent:true })
+           })
+    }
+    
+    onSaveDraft = (subject, name, body) => {
+        if(!subject||!body) return
+        emailService.saveDraft(subject, name, body)
+            .then(()=> {
+                this.setState({ saved:true })
+           })
     }
 
     render() {
-        const { emails } = this.state
         return (
-            !emails ? 'Loading...' :
                 <section className="list-container">
-                    <LeftNav />
-                    <EmailCompose onSendMail={this.onSendMail} />
-
-                    <EmailList emails={emails} />
-
+                    <h1>{this.state.folder}</h1>
+                    <LeftNav onChangeFolder={this.onChangeFolder} />
+                    <EmailCompose onSendMail={this.onSendMail} onSaveDraft={this.onSaveDraft} />
+                    <Switch>
+                    <Route component={EmailDetails} exact path="/email/details/:theEmailId" />
+                    <Route component={Folders} excat path="/email/:folderName" />
+                    </Switch>
                 </section>
         )
     }

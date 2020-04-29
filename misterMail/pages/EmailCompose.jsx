@@ -1,20 +1,20 @@
-const {  Link } = ReactRouterDOM
+const { Link } = ReactRouterDOM
 import { eventBus } from "../services/eventBusService.js"
 
 
 
-export  class EmailCompose extends React.Component {
+export class EmailCompose extends React.Component {
     state = {
         min: '',
         max: 'min',
-        open:'hide'
+        open: 'hide'
 
     }
 
 
 
     componentDidMount() {
-        this.unsubscribeFromEventBus= eventBus.on('change-display', () => {
+        this.unsubscribeFromEventBus = eventBus.on('change-display', (text) => {
             this.state.open === 'hide' ? this.setState({ open: 'show' }) : this.setState({ open: 'hide' })
         })
 
@@ -31,12 +31,16 @@ export  class EmailCompose extends React.Component {
     onSendMail = (ev) => {
         ev.preventDefault()
         this.props.onSendMail(this.state.subject, 'Tom', this.state.body)
-            this.setState({
-                open: 'hide'
-            })
-
+        this.setState({
+            open: 'hide'
+        })
     }
-
+    onSaveDraft = () => {
+        this.props.onSaveDraft(this.state.subject, 'Tom', this.state.body)
+        this.setState({
+            open: 'hide'
+        })
+    }
 
 
     render() {
@@ -46,8 +50,12 @@ export  class EmailCompose extends React.Component {
                 <div className={` compose-container ${open}`}>
                     <div className="compose-header">
                         New Massage
-                        <Link className="fas fa-times exit" to="/email"></Link>
-                        <Link className="fas fa-expand-alt exit" to="/email"></Link>
+                        <button className="fas fa-times exit" onClick={() => {
+                            this.setState({
+                                open: 'hide'
+                            })
+                        }}></button>
+                        {/* <Link className="fas fa-expand-alt exit" to="/email"></Link> */}
                         <button className={`${this.state.min} fas fa-window-minimize`} onClick={() => {
                             this.setState({ min: 'min', max: '' })
                         }}></button>
@@ -60,16 +68,18 @@ export  class EmailCompose extends React.Component {
                             <input type="text" name="recipients" placeholder="Recipients:" onChange={this.handleChange} />
                             <input type="text" name="subject" placeholder="Subject:" onChange={this.handleChange} />
                             <textarea id="body" type="text" name='body' rows="20" cols="30" onChange={this.handleChange} />
-                            <div className="button-container">
-                                <button className="send-btn" onClick={() =>
-                                    this.setState({ min: '', max: 'min' })
-                                }>Send</button>
-                                <button className="fas fa-paperclip"></button>
-                                <button className="fas fa-font"></button>
-                                <button className="far fa-smile-beam"></button>
-                                <button className="fas fa-trash-alt " ></button>
-                            </div>
+                            <button className="send-btn" >Send</button>
                         </form>
+                        <div className={`button-container ${this.state.min}`}>
+
+                            <button className="fas fa-paperclip"></button>
+                            <button className="fab fa-firstdraft" onClick={()=>{
+                                this.onSaveDraft()
+                            }}></button>
+                            <button className="far fa-smile-beam"></button>
+                            <button className="fas fa-trash-alt " ></button>
+                        </div>
+
                     </div>
 
                 </div>
