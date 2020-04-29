@@ -1,7 +1,7 @@
 const { Link } = ReactRouterDOM
 import keepService from '../services/keepService.js'
 import { KeepAdd } from '../cmps/KeepAdd.jsx'
-import KeepList from '../cmps/KeepList.jsx'
+import {KeepList} from '../cmps/KeepList.jsx'
 // import KeepFilter from '../cmps/KeepFilter.jsx'
 export class KeepApp extends React.Component {
     state = {
@@ -11,7 +11,6 @@ export class KeepApp extends React.Component {
 
     componentDidMount() {
         this.loadKeeps()
-        
     }
     loadKeeps() {
         keepService.query(this.state.filterBy)
@@ -27,8 +26,13 @@ export class KeepApp extends React.Component {
         this.loadKeeps()
     }
 
-    onChangeColor(props,bgc){
+    onChangeColor = (props,bgc) =>{
         keepService.changeColor(props,bgc)
+        this.loadKeeps()
+    }
+
+    onAddKeep = (img,title,subject) => {
+        keepService.createKeep(img,title,subject);
         this.loadKeeps()
     }
 
@@ -37,7 +41,8 @@ export class KeepApp extends React.Component {
         return (
             !keeps ? 'Loading...' :
             <section className = 'main-content'>
-               <KeepAdd keeps={keeps}/>
+                { keeps &&
+                    <KeepAdd keeps={keeps} onAddKeep = {this.onAddKeep} renderAdd = {this.render}/>}
                 <KeepList keeps={keeps} onDelete = {this.onDelete} colorChange={this.onChangeColor}/>
             </section>
         )

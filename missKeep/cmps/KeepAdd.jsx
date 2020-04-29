@@ -1,42 +1,100 @@
-import { NoteImg } from '../cmps/NoteImg.jsx'
+
 
 export class KeepAdd extends React.Component {
+
+    state = {
+        display: false,
+        file: null
+    };
+
     componentDidMount() {
-        console.log('MOUNT');
+        console.log(this.keeps);
     }
-    
-    onAddKeep(event){
-        let type =  event.target.value
-        
-       
-        // switch (type) {
-        //     case 'image':
-        //        <NoteImg/>
-        //       break;
-        //     case 'list':
-        //       break;
-        //     case 'video':
-        //       break;
-        //   }
-    }
-    
-    inputKeyUp(e) {
+
+
+
+    inputKeyUp = (e) => {
         e.which = e.which || e.keyCode;
-        if(e.which == 13) {
-            console.log('sacdvs');
-            // _createKeeps(event.target.value);
+        if (e.which == 13) {
+            this.addKeep(event.target.value)
         }
     }
 
+
+    handleChange = ({ target }) => {
+        const field = target.name
+        const value = target.value
+
+        this.setState(prevState => ({ [field]: value }))
+    }
+
+    handleImageChange = () => {
+        this.setState({
+            file: URL.createObjectURL(event.target.files[0])
+        })
+        this.handleClickExpand()
+    }
+
+    handleClickExpand = () => {
+
+        this.setState(state => ({
+            display: true
+        }));
+
+    }
+    
+    imag = () =>{
+        return <img src={this.state.file} width="100%"/>
+    }
+
+    expandClose = () => {
+        if (!this.state.title && !this.state.subject) return
+        this.props.onAddKeep(this.state.file,this.state.title, this.state.subject)
+
+        this.setState(state => ({
+            display: false,
+            file: null
+        }));
+
+    }
+
+
     render() {
-        return (
-            <section className="txtAdd">
-                <input type="text" placeholder="Take a note…" onKeyUp={this.inputKeyUp}/>
-                <button className="far fa-lg fa-image" onClick={() =>{this.onAddKeep(event)}} value='image'></button>
-                <button className="fas fa-lg fa-list" onClick= {() =>{this.onAddKeep(event)}} value='list'></button>
-                <button className="fab fa-lg fa-youtube" onClick={() =>{this.onAddKeep(event)}} value='video'></button>
-            </section>
-        )
+        // onKeyUp={this.inputKeyUp}
+        if (!this.state.display) {
+            return (
+                <section className="txtAdd">
+                    <input type="text" name="demo" onClick={this.handleClickExpand} placeholder="Take a note…" defaultValue="" />
+                    <input
+                        type="file"
+                        id="upload-button"
+                        name="img"
+                        ref={(ref) => this.upload = ref}
+                        style={{ display: "none" }}
+                        onChange={(e) => this.handleImageChange(e.target.files)}
+                    />
+                    <button className="far fa-lg fa-image" onClick={(e) => this.upload.click()} value='image'></button>
+                    <button className="fas fa-lg fa-list" onClick={() => { this.props.onAddKeep(event) }} value='list'></button>
+                    <button className="fab fa-lg fa-youtube" onClick={() => { this.props.onAddKeep(event) }} value='video'></button>
+                </section>
+            )
+        } else {
+            return (
+                <section className="txtAdd expand">
+                    <img src={this.state.file} width="100%"/>
+                    <input type="text" name="title" placeholder="Title" onChange={this.handleChange} />
+                    <input type="text" name="subject" onChange={this.handleChange} id="textBottom" placeholder="Take a note…" />
+
+                    <div id="textMenuContainer">
+                        <button className="far fa-lg fa-image" onClick={() => { this.props.onAddKeep(event) }} value='image'></button>
+                        <button className="fas fa-lg fa-list" onClick={() => { this.props.onAddKeep(event) }} value='list'></button>
+                        <button className="fab fa-lg fa-youtube" onClick={() => { this.props.onAddKeep(event) }} value='video'></button>
+                        <button className="close-expand" onClick={this.expandClose}>Close</button>
+                    </div>
+
+                </section>
+            )
+        }
 
     }
 }
