@@ -15,14 +15,12 @@ export class App extends React.Component {
     render() {
         return (
             <Router >
-                <header>
                     <Header />
                     <Switch>
                     <Route component={MisterEmail} path="/email/:folderName" />
                     <Route component={KeepApp} path="/missKeep"/>
                     <Route component={HomePage} path="/" />
                     </Switch >
-                </header>
                 <main>
                 </main>
                 <footer>

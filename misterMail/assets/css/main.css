@@ -11,12 +11,12 @@ li{
 
 }
 footer{
-    position: absolute;
     bottom: 0;
     width: 100vw;
     height: 2rem;
     text-align: center;
-    background-color: rgba(80, 73, 73, 0.267);
+    position: fixed;
+    background-color: rgb(116, 107, 107);
 }
 .home-page{
     text-align: center;
@@ -48,14 +48,7 @@ footer{
     align-items: center;
     padding-left: 2px;
 }
-.main-header input{
-    margin-left: 2rem;
-    border: none;
-    border-radius: 1rem;
-    padding :0.4rem 0.1rem;
-    box-sizing: border-box;
-    outline: none;
-}
+
 
 .list-container{
     margin-top: 1rem;
@@ -64,51 +57,49 @@ footer{
 .email-list{
     margin-left:10rem; 
     padding:0 .7rem;
-}
- 
-.email-list a{
     display: flex;
+    flex-direction: column;
+}
+.email-list a{
     color: black;
+
 }
 .email-list li{
-    border-bottom: 0.5px solid rgb(191, 198, 204);
-    display: flex;
-}
-.email-list li:hover{
-    background-color: rgb(228, 222, 222);
-}
-
-.time{
-    font-weight: 40;
-    font-size: 0.7rem;
-    position: absolute;
-    right : 5px;
-
-}
-.subject{
-    font-size: 0.7rem;
-    margin-left: 1rem;
-}
-
-.from{
-    width: 6rem;
-    font-size: 0.7rem;
-    padding-left: 5px;
-
-}   
-
-.body{
-    font-size: 0.7rem;
-    font-weight: 400;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    border-bottom: 0.5px solid rgb(191, 198, 204);
+    padding: 3px 0px;
+}
 
+.email-list li:hover{
+    background-color: rgb(228, 222, 222);
+}
+.time{
+    font-weight: 40;
+    font-size: 0.7rem;
+    overflow: hidden;
+    position: absolute;
+    right: 3px;
+    white-space: nowrap;  
+}
+.subject{
+    font-size: 0.7rem;
+    
+}
+.from{
+    display: inline-block;
+    font-size: 0.7rem;
+    margin-left: 5px;
+    width: 4rem;
+}   
+.body{
+    font-size: 0.7rem;
+    font-weight: 400;
+    
 
 }
-.fa-star ,.fa-star{
 
-}
 .left-nav{
     position: fixed;
     background-color: rgb(255, 255, 255);
@@ -154,6 +145,15 @@ footer{
 .mail-deatils{
     margin-bottom: 1rem;
 }
+.more{
+    color: rgb(36, 209, 51);
+    cursor: pointer;
+}
+.less{
+    color: rgb(221, 54, 42);
+    cursor: pointer;
+
+}
 .bar-container{
     width: 100%;
     background-color: rgb(219, 212, 212);
@@ -166,15 +166,13 @@ footer{
    color: rgb(236, 234, 234);
    font-size: .8rem;
    height: 1rem;
-
-   
 }
 .compose-container{
 
     display: flex;
     flex-direction: column;
     width: fit-content;
-    position: absolute;
+    position: fixed;
     right: 2rem;
     bottom: 2rem;
     z-index: 1;
@@ -272,3 +270,127 @@ textarea {
     outline: none;
     cursor: pointer;
 }
+
+.bold{
+    font-weight: bold;
+}
+.user-msg{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #67e242;
+  font-size: 1rem;   
+     padding: 5px 10px;
+    color: rgb(255, 254, 254);
+      border-radius: 6px;
+  }
+
+/* @media  (max-width: 660px) {
+
+    .main-header a{
+        margin: 0;
+        padding: 0;
+    }
+    .main-header ul{
+        margin: 0;
+        padding: 0;
+        width: fit-content;
+        display: none;
+    }
+    .main-header input{
+        margin: 0;
+        padding: 0;
+        width: fit-content;
+    }
+    .email-list {
+        display: flex ;
+        flex-wrap: wrap;
+        margin-left: 0px;
+    }
+    .email-list li{
+        display: flex ;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .time,.from,.subject{
+        position: unset;
+        display: block;
+
+    }
+
+    .star{
+        position: absolute;
+        right: 0;
+    }
+    .envelop{
+    display: none;        
+    }
+    .left-nav{
+        background-color: rgb(255, 255, 255);
+        bottom: 0;
+        width: 100vw;
+        z-index: 2;
+        }
+    .left-nav ul{
+        padding: 0;
+        margin-left: 1rem;
+        display: flex;
+
+    }
+    
+    .left-nav ul a,.left-nav ul button{
+        padding:0.3rem;
+        color: rgb(79, 83, 83);
+        font-size: 0.5rem;
+        width: 100%;
+        background-color: #fff;
+        cursor: pointer;
+        border: none;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    
+    }
+    .left-nav ul .compose{
+        outline: none;
+        padding:0.3rem;
+        border: none;
+        font-size: 0.8rem;
+    }
+    .status-bar{
+        display: none;
+    }
+    .email-filter{
+        margin-left:0; 
+        width: 90vw;
+        border:none;
+        margin-bottom: .5rem;
+    }
+    .email-filter input{
+        padding: 0;
+        margin:0;
+        border: none;
+        outline: none;
+    }
+    .email-filter button,.email-filter select{
+        border: none;
+        background-color: rgba(255, 255, 255, 0);
+        outline: none;
+        cursor: pointer;
+    }
+    footer{
+        position: unset;
+        display: none;
+    }
+    .email-body{
+        margin:1rem; 
+    }
+    .compose-container{
+
+
+        bottom: 1.3rem;
+    }
+    .send-btn{
+        width: 100%;
+        border: 3px solid oldlace;
+    }
+} */

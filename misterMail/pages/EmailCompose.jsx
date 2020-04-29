@@ -2,7 +2,6 @@ const { Link } = ReactRouterDOM
 import { eventBus } from "../services/eventBusService.js"
 
 
-
 export class EmailCompose extends React.Component {
     state = {
         min: '',
@@ -26,7 +25,7 @@ export class EmailCompose extends React.Component {
         const field = target.name
         const value = target.value
 
-        this.setState(prevState => ({ [field]: value }))
+        this.setState({ [field]: value })
     }
     onSendMail = (ev) => {
         ev.preventDefault()
@@ -34,12 +33,16 @@ export class EmailCompose extends React.Component {
         this.setState({
             open: 'hide'
         })
+        eventBus.emit('show-msg', { txt: 'Email Sent' })
+
     }
     onSaveDraft = () => {
         this.props.onSaveDraft(this.state.subject, 'Tom', this.state.body)
         this.setState({
             open: 'hide'
         })
+        eventBus.emit('show-msg', { txt: 'Draft Saved' })
+
     }
 
 
@@ -73,7 +76,7 @@ export class EmailCompose extends React.Component {
                         <div className={`button-container ${this.state.min}`}>
 
                             <button className="fas fa-paperclip"></button>
-                            <button className="fab fa-firstdraft" onClick={()=>{
+                            <button className="fab fa-firstdraft" onClick={() => {
                                 this.onSaveDraft()
                             }}></button>
                             <button className="far fa-smile-beam"></button>

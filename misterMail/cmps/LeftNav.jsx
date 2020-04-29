@@ -4,6 +4,7 @@ import emailService from '../services/emailServices.js'
 import { eventBus } from "../services/eventBusService.js"
 
 import { StatusBar } from './StatusBar.jsx'
+import { UserMsg } from "../../UserMsg.jsx"
 
 export class LeftNav extends React.Component {
     state = {
@@ -11,6 +12,15 @@ export class LeftNav extends React.Component {
     }
 
     componentDidMount() {
+        this.unsubscribeFromEventBus = eventBus.on('update-bar', () => {
+            emailService.howManyRead()
+                .then(pc => {
+                    console.log('im gher');
+                    
+                    this.setState({ pc })
+                })
+        })
+        
         emailService.howManyRead()
             .then(pc => {
 
@@ -18,9 +28,14 @@ export class LeftNav extends React.Component {
             })
     }
 
+    componentWillUnmount() {
+        this.unsubscribeFromEventBus();
+    }
     render() {
         return (
             <section className="left-nav">
+                <UserMsg />
+
                 <ul>
                     <li><button className="fas fa-plus compose" onClick={() => {
                         eventBus.emit('change-display', { txt: 'sent' })
