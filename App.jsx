@@ -15,7 +15,6 @@ export class App extends React.Component {
     render() {
         return (
             <Router >
-                <header>
                     <Header />
                     <Switch>
                     <Route component={EmailDetails} path="/email/details/:theEmailId" />
@@ -25,7 +24,6 @@ export class App extends React.Component {
                     <Route component={KeepApp} path="/missKeep"/>
                     <Route component={HomePage} path="/" />
                     </Switch >
-                </header>
                 <main>
                 </main>
                 <footer>
