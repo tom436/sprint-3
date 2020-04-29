@@ -17,7 +17,7 @@ export class App extends React.Component {
                         
                     <Route component={MisterEmail} path="/email/:folderName" />
                     <Route component={KeepApp} path="/missKeep"/>
-                    <Route component={HomePage} path="/" />
+                    <Route component={MisterEmail} path="/" />
                     </Switch >
                 <main>
                 </main>
