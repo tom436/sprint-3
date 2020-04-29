@@ -1,7 +1,5 @@
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
-// const { Link } = ReactRouterDOM
-// const history = History.createBrowserHistory()
 
 import {Header} from './misterMail/cmps/Header.jsx'
 import {MisterEmail} from './misterMail/pages/MisterEmail.jsx';
