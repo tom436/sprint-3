@@ -8,9 +8,6 @@ body {
 }
 
 .txtAdd {
-    /* display: grid; */
-    /* flex-direction: row; */
-    /* justify-content: center space-between; */
     width: fit-content;
     border: 1px solid transparent;
     border-color: #e0e0e0;
@@ -87,6 +84,7 @@ body {
 }
 
 .keeps>* {
+    position: relative;
     display: inline-block;
     vertical-align: top;
     margin: 16px;
@@ -99,9 +97,11 @@ body {
     width: 240px;
     max-height: 324px;
     min-height: 104px;
-    transition: top .13s;
+    transition: .5s;
 }
-
+.keeps>*>*{
+    padding: 2px;
+}
 .keeps img{
     width: 100%;
 }
@@ -137,4 +137,32 @@ body {
 #textBottom {
     height: 62px;
     font-size: smaller;
+}
+
+.tool-bar{
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(253, 229, 229, 0.7);
+    width: 100%;
+    height: 30px;
+    align-items: center;
+}
+
+.colorBar{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    position: absolute;
+    right: 20px;
+    bottom: 30px;
+    background-color: white;
+    padding: 5px;
+}
+
+.colorBar > button{
+    border-style: none;
+    width: 20px;
+    height: 20px;
+    margin: 2px;
+    border-radius: 50%;
+    transition: .5s;
 }

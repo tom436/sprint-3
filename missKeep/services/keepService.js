@@ -61,13 +61,11 @@ function _createKeeps() {
 }
 
 function _createKeep(img, title, subject) {
-    console.log(img,title,subject);
     return {
-        type: "NoteText",
         isPinned: true,
         id: utilService.makeId(),
         info: {
-            img: img,
+            url: img,
             title: title,
             txt: subject,
         },
@@ -104,6 +102,5 @@ function getById(keepId) {
 }
 
 function _getIdxById(keepId) {
-    console.log(keepId);
     return gKeeps.findIndex(keep => keep.id === keepId)
 }

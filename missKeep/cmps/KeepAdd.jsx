@@ -42,20 +42,17 @@ export class KeepAdd extends React.Component {
         }));
 
     }
-    
-    imag = () =>{
-        return <img src={this.state.file} width="100%"/>
-    }
+
 
     expandClose = () => {
-        if (!this.state.title && !this.state.subject) return
-        this.props.onAddKeep(this.state.file,this.state.title, this.state.subject)
 
         this.setState(state => ({
             display: false,
             file: null
         }));
 
+        if (!this.state.title && !this.state.subject && !this.state.file) return
+        this.props.onAddKeep(this.state.file, this.state.title, this.state.subject)
     }
 
 
@@ -81,12 +78,20 @@ export class KeepAdd extends React.Component {
         } else {
             return (
                 <section className="txtAdd expand">
-                    <img src={this.state.file} width="100%"/>
+                    <img src={this.state.file} width="100%" />
                     <input type="text" name="title" placeholder="Title" onChange={this.handleChange} />
                     <input type="text" name="subject" onChange={this.handleChange} id="textBottom" placeholder="Take a note…" />
 
                     <div id="textMenuContainer">
-                        <button className="far fa-lg fa-image" onClick={() => { this.props.onAddKeep(event) }} value='image'></button>
+                        <input
+                            type="file"
+                            id="upload-button"
+                            name="img"
+                            ref={(ref) => this.upload = ref}
+                            style={{ display: "none" }}
+                            onChange={(e) => this.handleImageChange(e.target.files)}
+                        />
+                        <button className="far fa-lg fa-image" onClick={(e) => this.upload.click()} value='image'></button>
                         <button className="fas fa-lg fa-list" onClick={() => { this.props.onAddKeep(event) }} value='list'></button>
                         <button className="fab fa-lg fa-youtube" onClick={() => { this.props.onAddKeep(event) }} value='video'></button>
                         <button className="close-expand" onClick={this.expandClose}>Close</button>

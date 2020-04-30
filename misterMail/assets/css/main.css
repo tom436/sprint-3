@@ -32,6 +32,7 @@ footer {
     text-align: center;
     background-image: url(https://www.ecopetit.cat/wpic/mpic/16-168183_office-desk-decor-white.jpg);
     background-size: cover;
+    background-position: center;
     width: 100vw;
     height: 100%;
 }
