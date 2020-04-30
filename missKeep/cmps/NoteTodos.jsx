@@ -1,5 +1,5 @@
 import utilService from '../services/utilService.js'
-import { TodoPreview } from 'TodoPreview.jsx'
+import { TodoPreview } from './TodoPreview.jsx'
 
 export function NoteTodos(props) {
     const NoteTodos = props

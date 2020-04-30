@@ -35,6 +35,7 @@ footer {
     background-position: center;
     width: 100vw;
     height: 100%;
+
 }
 
 .home-page h1,
@@ -84,6 +85,7 @@ footer {
 .email-list {
     margin-left: 10rem;
     padding: 0 .7rem;
+    margin-bottom: 50px
 }
 
 .email-list a {
@@ -117,6 +119,7 @@ footer {
     display: inline-block;
     font-size: 0.7rem;
     margin-left: 5px;
+    margin-right: 10px;
     width: 4rem;
 }   
 .body{
@@ -318,13 +321,14 @@ textarea {
 }
 .user-msg{
     position: absolute;
-    bottom: 0;
-    width: 100%;
+    top: 40px;
+    left: 250px;
     background-color: #67e242;
   font-size: 1rem;   
      padding: 5px 10px;
     color: rgb(255, 254, 254);
       border-radius: 6px;
+      z-index: 3;
   }
 
 /* @media  (max-width: 660px) {

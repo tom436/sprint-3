@@ -134,7 +134,6 @@ function saveDraft(subject,from,body){
     const newDraft=_createEmail(subject, body, from)
     gDrafts.unshift(newDraft)
     storageService.store('drafts', gDrafts)
-    console.log('arraived!');
     
     return Promise.resolve();
 

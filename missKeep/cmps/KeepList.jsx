@@ -1,4 +1,4 @@
-import { NotePreview } from 'NotePreview.jsx'
+import { NotePreview } from './NotePreview.jsx'
 
 export function KeepList(props) {
     const { keeps } = props
